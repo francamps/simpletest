@@ -7,6 +7,7 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
+  font-family: Lato;
 }
 
 header {
@@ -18,15 +19,56 @@ header {
   right: 0;
   background: #fff;
   border-bottom: 1px solid #232323;
+  box-shadow: 2px 0 5px rgba(35, 35, 35, 0.5);
 }
 
 .container {
   width: 1200px;
   margin: 0 auto;
+  margin-top: 87px;
 }
-.container img {
-  clear: both;
-  text-align: center;
+.container .banner-image {
+  background-image: url("/assets/staffpicks.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 490px 121px;
+  height: 121px;
+  width: 490px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+#content #video-list {
+  width: 40%;
+  height: 480px;
+  overflow: scroll;
+  float: left;
+  background: #f1f1f1;
+}
+#content #video-list .video-list-object {
+  padding: 20px;
+  font-weight: 900;
+  border-bottom: 1px solid #fff;
+  -moz-transition: background-color .1s;
+  -webkit-transition: background-color .1s;
+  transition: background-color .1s;
+  background-color: #f1f1f1;
+  text-transform: capitalize;
+}
+#content #video-list .video-list-object:hover {
+  -moz-transition: all .1s;
+  -webkit-transition: all .1s;
+  transition: all .1s;
+  background: #f9f9f9;
+  cursor: pointer;
+}
+#content #video-showcase {
+  width: 55%;
+  height: 480px;
+  float: right;
+  background: #ccc;
+  overflow: scroll;
+  padding: 20px;
 }
 
 /*# sourceMappingURL=main.css.map */
