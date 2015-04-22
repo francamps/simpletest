@@ -1,0 +1,41 @@
+// scss-lint:disable PropertySortOrder
+
+$bg-grey: #f1f1f1;
+$white: #fff;
+$almost-black: #232323;
+
+$fuschia: #ff0080;
+
+html {
+  padding: 0;
+}
+
+body {
+  background: $bg-grey;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+header {
+  position: fixed;
+  height: 47px;
+  padding: 10px 20px;
+  left: 0;
+  top: 0;
+  right: 0;
+  background: $white;
+  border-bottom: 1px solid $almost-black;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+
+  img {
+    clear: both;
+    text-align: center;
+  }
+}
+
+

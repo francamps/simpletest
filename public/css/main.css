@@ -1,0 +1,32 @@
+html {
+  padding: 0;
+}
+
+body {
+  background: #f1f1f1;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+header {
+  position: fixed;
+  height: 47px;
+  padding: 10px 20px;
+  left: 0;
+  top: 0;
+  right: 0;
+  background: #fff;
+  border-bottom: 1px solid #232323;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+.container img {
+  clear: both;
+  text-align: center;
+}
+
+/*# sourceMappingURL=main.css.map */
