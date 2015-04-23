@@ -73,7 +73,7 @@ module.exports = function (grunt) {
 	            style: 'expanded'
 	          },
 	          files: {
-	            'public/css/main.css': 'styles/scss/main.scss'
+	            'public/css/style.css': 'styles/scss/style.scss'
 	          }
 	        }
 	    },
@@ -85,15 +85,15 @@ module.exports = function (grunt) {
               options: {
                 // Target-specific options go here.
               },
-              src: 'public/css/main.css',
-              dest: 'public/css/main.css'
+              src: 'public/css/style.css',
+              dest: 'public/css/style.css'
             },
 	        sourcemap: {
 	            options: {
 	                map: true
 	            },
-				src: 'public/css/main.css',
-              	dest: 'public/css/main.css'	            
+				src: 'public/css/style.css',
+              	dest: 'public/css/style.css'	            
 	        }
 		},	        
 	});

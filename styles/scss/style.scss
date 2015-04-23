@@ -1,0 +1,225 @@
+// scss-lint:disable PropertySortOrder
+
+$bg-grey: #f1f1f1;
+$bg-grey-hover: lighten($bg-grey, 3%);
+$light-grey: #e1e1e1;
+$light-grey-hover: lighten($light-grey, 3%);
+$mid-grey: #b5b5b5;
+$second-grey: #444;
+$almost-black: #232323;
+$white: #fff;
+
+$vim-blue: rgb(29, 173, 239);
+$blue-black: rgb(27, 26, 37);
+$fuschia: #ff0080;
+
+html {
+  padding: 0;
+}
+
+body {
+  background: $bg-grey;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+
+  h1 {
+    font-family: 'Playfair Display';
+    text-align: center;
+    font-size: 88px;
+    color: $blue-black;
+    margin-bottom: 30px;
+  }
+}
+
+header {
+  position: fixed;
+  height: 37px;
+  padding: 10px 20px;
+  left: 0;
+  top: 0;
+  right: 0;
+  background: $white;
+  border-bottom: 1px solid $almost-black;
+  z-index: 1000;
+  box-shadow: 2px 0 5px rgba($almost-black, .5);
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  margin-top: 70px;
+
+  .banner-image {
+    background-image: url('../assets/staffpicks.png');
+    background-repeat: no-repeat;
+    background-position: center;     
+    background-size: 490px 121px;
+    height: 121px;
+    width: 490px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+}
+
+#content {
+
+  .ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y {
+    background-color: $vim-blue !important;
+    border-radius: 0 !important;
+    opacity: 1 !important;
+  }
+
+  #video-list {
+    width: 40%;
+    height: 480px;
+    padding: 0;
+    overflow: scroll;
+    float: left;
+    background: none;
+    z-index:10 !important;
+
+    position:relative;
+
+    h2 {
+      padding: 0 20px;
+      font-weight: 900;
+
+    }
+
+    .video-list-object {
+      padding: 20px;
+      font-weight: 400;
+      font-family: 'Lato';
+      border-bottom: 1px solid $bg-grey;
+      transition: background-color .1s;
+      background-color: $light-grey;
+      height: 40px;
+
+      img {
+        float: left;
+        width: 53;
+      }
+
+      img,
+      span {
+        opacity: .25;
+        transition: opacity .1s;
+        height: 40px;
+        float: left;
+        display: inline;
+      }
+
+      span {
+        line-height: 40px;
+        padding-left: 10px;
+        text-overflow: ellipsis;
+        width: 320px;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      // scss-lint:disable NestingDepth
+      &:hover,
+      &.active {
+        transition: background .1s;        
+        background: $light-grey-hover;
+        cursor: pointer;
+
+        img,
+        span {
+          opacity: 1;
+          transition: opacity .1s;
+        }
+      }
+    }
+  }
+
+  #video-showcase {
+    width: 55%;
+    min-height: 480px;
+    float: right;
+    background: $light-grey;
+    padding: 20px;
+    padding-top: 0;
+
+    h2 {
+      font-weight: 400;
+      color: $second-grey;
+    }
+
+    .video-info {
+      display: block;
+      height: 20px;
+      margin-bottom: 20px;
+
+      // scss-lint:disable SelectorDepth
+      .likes {
+        background-image: url('../assets/like.png');
+        background-repeat: no-repeat;
+        background-size: 29px 20px;
+        height: 20px;
+        line-height: 20px;
+        padding-left: 35px;        
+        width: 100px;
+        display: inline;
+        float: left;
+      }
+
+      // scss-lint:disable SelectorDepth
+      .plays {
+        background-image: url('../assets/play.png');
+        background-repeat: no-repeat;
+        background-size: 20px 20px;
+        height: 20px;
+        line-height: 20px;
+        padding-left: 35px;        
+        width: 100px;
+        display: inline;
+        float: left;
+      }
+
+      .author {
+        float: right;
+      }
+    }
+
+    .video-thumbnail {
+      margin: 0 auto;
+      margin-bottom: 10px;
+    }
+
+    .video-description {
+      font-family: 'Lato';
+      line-height: 24px;
+      font-size: 18px;
+      height: 100px;
+      overflow: hidden;
+      transition: height .5s;
+      
+      // scss-lint:disable NestingDepth
+      &:after {
+        content: '...';
+      }
+    }
+
+    .show-more {
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      color: $mid-grey;
+      background-color: $light-grey;
+      transition: background-color, color .2s;
+
+      &:hover {
+        color: $almost-black;
+        background-color: $light-grey-hover;
+        transition: background-color, color .2s;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+
