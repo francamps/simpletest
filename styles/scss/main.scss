@@ -1,8 +1,13 @@
 // scss-lint:disable PropertySortOrder
 
 $bg-grey: #f1f1f1;
+$bg-grey-hover: lighten($bg-grey, 3%);
+
+$light-grey: #e1e1e1;
+$light-grey-hover: lighten($light-grey, 3%);
 $white: #fff;
 $almost-black: #232323;
+$blue-black: rgb(27, 26, 37);
 
 $fuschia: #ff0080;
 
@@ -15,6 +20,13 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
+  font-family: Montserrat;
+
+  h1 {
+    text-align: center;
+    font-size: 48px;
+    color: $blue-black;
+  }
 }
 
 header {
@@ -26,15 +38,122 @@ header {
   right: 0;
   background: $white;
   border-bottom: 1px solid $almost-black;
+  z-index: 1000;
+  box-shadow: 2px 0 5px rgba($almost-black, .5);
 }
 
 .container {
   width: 1200px;
   margin: 0 auto;
+  margin-top: 87px;
 
-  img {
-    clear: both;
-    text-align: center;
+  .banner-image {
+    background-image: url('/assets/staffpicks.png');
+    background-repeat: no-repeat;
+    background-position: center;     
+    background-size: 490px 121px;
+    height: 121px;
+    width: 490px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+}
+
+#content {
+  #video-list {
+    width: 40%;
+    height: 480px;
+    padding: 0 0 20px;
+    overflow: scroll;
+    float: left;
+    background: $light-grey;
+
+    h2 {
+      padding: 0 20px;
+      font-weight: 900;
+
+    }
+
+    .video-list-object {
+      padding: 20px;
+      font-weight: 400;
+      font-family: 'Playfair Display';
+      border-bottom: 1px solid $white;
+      transition: background-color .1s;
+      background-color: $light-grey;
+      text-transform: capitalize;
+
+      // scss-lint:disable NestingDepth
+      &:hover,
+      &.active {
+        transition: background .1s;        
+        background: $light-grey-hover;
+        cursor: pointer;
+      }
+    }
+  }
+
+  #video-showcase {
+    width: 55%;
+    min-height: 480px;
+    float: right;
+    background: $light-grey;
+    padding: 20px;
+    padding-top: 0;
+
+    .video-info {
+      display: block;
+      height: 20px;
+      margin-bottom: 20px;
+
+      // scss-lint:disable SelectorDepth
+      .likes {
+        background-image: url('/assets/like.png');
+        background-repeat: no-repeat;
+        background-size: 29px 20px;
+        height: 20px;
+        line-height: 20px;
+        padding-left: 35px;        
+        width: 100px;
+        display: inline;
+        float: left;
+      }
+
+      // scss-lint:disable SelectorDepth
+      .plays {
+        background-image: url('/assets/play.png');
+        background-repeat: no-repeat;
+        background-size: 20px 20px;
+        height: 20px;
+        line-height: 20px;
+        padding-left: 35px;        
+        width: 100px;
+        display: inline;
+        float: left;
+      }
+
+      .author {
+        float: right;
+      }
+    }
+
+    .video-thumbnail {
+      margin: 0 auto;
+      margin-bottom: 10px;
+    }
+
+    .video-description {
+      font-family: 'Lato';
+      line-height: 24px;
+      font-size: 18px;
+      height: 100px;
+      overflow: hidden;
+      
+      // scss-lint:disable NestingDepth
+      &:after {
+        content: '...';
+      }
+    }
   }
 }
 

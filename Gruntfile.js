@@ -7,12 +7,14 @@ module.exports = function (grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 	    copy: {
 	      dist: {
-	       files: [{
-	         expand: true,
-	         cwd: 'bower_components/jquery/dist/',
-	         src: 'jquery.min.js',
-	         dest: 'lib'
-	       }]
+	       	files: [
+			{
+				expand: true,
+				cwd: 'bower_components/perfect-scrollbar/',
+				src: 'css/perfect-scrollbar.min.css',
+				dest: 'public'
+	      	}
+	      	]
 	      }
 	    },		
 		watch: {
@@ -26,7 +28,7 @@ module.exports = function (grunt) {
 			},
 			sass: {
 				files: '**/*.scss',
-				tasks: ['sass']	
+				tasks: ['sass', 'autoprefixer']	
 			}
 		},
 		jshint: {
@@ -49,7 +51,8 @@ module.exports = function (grunt) {
 			dist: {
 				files: {
 				  	'public/js/lib.min.js': [
-				    	'bower_components/jquery/dist/jquery.js'
+				    	'bower_components/jquery/dist/jquery.js',
+				    	'bower_components/perfect-scrollbar/js/perfect-scrollbar.jquery.js'
 					]
 				}
 			}			
@@ -73,7 +76,26 @@ module.exports = function (grunt) {
 	            'public/css/main.css': 'styles/scss/main.scss'
 	          }
 	        }
-	    }    
+	    },
+		autoprefixer: {
+		    options: {
+		      browsers: ['last 2 version', 'ie 8', 'ie 9']
+		    },
+		    single_file: {
+              options: {
+                // Target-specific options go here.
+              },
+              src: 'public/css/main.css',
+              dest: 'public/css/main.css'
+            },
+	        sourcemap: {
+	            options: {
+	                map: true
+	            },
+				src: 'public/css/main.css',
+              	dest: 'public/css/main.css'	            
+	        }
+		},	        
 	});
 
 	grunt.registerTask('default', [
@@ -81,13 +103,15 @@ module.exports = function (grunt) {
 		'uglify',
 		'scsslint',
   		'sass',
-  		'copy'
+  		'copy',
+  		'autoprefixer'
 	]);
 
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
   	grunt.loadNpmTasks('grunt-contrib-sass');
+  	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-scss-lint');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 };

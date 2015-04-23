@@ -2,15 +2,16 @@
 <html>
   <head>
     <title>Yo Vimeo</title>
-    <!-- Not present in the tutorial. Just for basic styling. -->
     <link rel="stylesheet" href="/css/main.css" />
-    <script src="/js/lib.min.js"></script>
-    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/perfect-scrollbar.min.css" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.0/react.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.0/JSXTransformer.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
+    <script src="/js/lib.min.js"></script>
+    <script src="/js/simpletest.min.js"></script>
+    
   </head>
   <body>
 
@@ -19,9 +20,22 @@
     </header>
 
     <div class="container" >
+      <div id="banner" class="banner-image"></div>
+      <div id="content">
+        <h2 id="video-list-title">Selected videos</h2>
+        <div id="video-list"></div>
+        <div id="video-showcase">
+          <h2 class="video-title"></h2>
+          <div class="video-thumbnail"></div>
+          <div class="video-info">
+            <div class="likes"></div>
+            <div class="plays"></div>
+            <div class="author"></div>
+          </div>
+          <div class="video-description"></div>
+        </div>
+      </div>
     </div>
 
   </body>
-
-  <script src="/js/simpletest.min.js"></script>
 </html>
