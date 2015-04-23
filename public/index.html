@@ -2,37 +2,45 @@
 <html>
   <head>
     <title>Yo Vimeo</title>
-    <link rel="stylesheet" href="/css/main.css" />
-    <link rel="stylesheet" href="/css/perfect-scrollbar.min.css" />
+    <link rel="stylesheet" href="css/perfect-scrollbar.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
 
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     
-    <script src="/js/lib.min.js"></script>
-    <script src="/js/simpletest.min.js"></script>
+    <script src="js/lib.min.js"></script>
+    <script src="js/simpletest.min.js"></script>
     
   </head>
   <body>
 
     <header>
-      <img src="https://f.vimeocdn.com/logo.svg?color=232323" width="140" height="40">
+      <a href="http://www.vimeo.com"><img src="https://f.vimeocdn.com/logo.svg?color=232323" width="110" height="30"></a>
     </header>
 
     <div class="container" >
-      <div id="banner" class="banner-image"></div>
+
+      <h1 style="text-align: center">Staff picks</h1>
+
       <div id="content">
-        <h2 id="video-list-title">Selected videos</h2>
+
         <div id="video-list"></div>
+
         <div id="video-showcase">
           <h2 class="video-title"></h2>
+
           <div class="video-thumbnail"></div>
+
           <div class="video-info">
             <div class="likes"></div>
             <div class="plays"></div>
             <div class="author"></div>
           </div>
+
           <div class="video-description"></div>
+
+          <div class="show-more">Show more</div>
+
         </div>
       </div>
     </div>

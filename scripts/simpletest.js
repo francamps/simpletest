@@ -3,21 +3,28 @@ $(function () {
 	var channel = "staffpicks",
 		width = "660",
 		baseURL = 'https://vimeo.com/api/v2/channel/',
-		request = '/videos.json',		
-		baseOEmbed = 'https://vimeo.com/api/oembed.json?url=',
-		videoData;
+		request = '/videos.json',
+		baseOEmbed = 'https://vimeo.com/api/oembed.json?url=';
+
+	/**
+	*
+	* Load and display videos
+	*
+	*/
 
 	function addVideoToList (videoObj) {
 		if (videoObj.embed_privacy === "anywhere") {
 			var id = videoObj.id,
-				title = videoObj.title;
+				title = videoObj.title,
+				thumbnail = '<img height=40 src=' + videoObj.thumbnail_small + '>';
 
 			var dataCall = document.createElement('div');
 				dataCall.setAttribute('class', 'video-list-object');
 				dataCall.setAttribute('id', 'video-list-object-' + id);
-				dataCall.innerHTML = title;
+				dataCall.innerHTML = '<span>' + title + '</span>';
 			
 			document.getElementById("video-list").appendChild(dataCall);
+			$('#video-list-object-' + id).prepend(thumbnail);
 
 			bindVideoDisplay(videoObj);
 		}
@@ -28,9 +35,10 @@ $(function () {
 			addVideoToList(videos[i]);
 		}
 		$('.video-list-object:first').trigger('click');
+		bindScrollbar();
 	}
 
-	function loadVideosFormChannel (channel) {
+	function loadVideosFromChannel (channel) {
 		$.ajax({
 			url: baseURL + channel + request,
 			success: function (dataCall, textResponse, code) {
@@ -43,11 +51,10 @@ $(function () {
 	}
 
 	function loadOEmbed (video) {
-		console.log(video);
 		$.ajax({
-			url: baseOEmbed + video.url + '&width=' + width,
+			url: baseOEmbed + video.url + '&width=' + width + '&title=false',
 			success: function (oEmbedObj, textResponse, code) {
-				var allVideo = $.extend({}, video, oEmbedObj);
+				var allVideo = $.extend({}, oEmbedObj, video);
 				fillVideoDisplay(allVideo);
 			},
 			error: function (errorResponse) {
@@ -59,12 +66,15 @@ $(function () {
 	function fillVideoDisplay (video) {
 		// Add content
 		$(".video-title").html(video.title);
-		//$(".video-thumbnail").html('<img width=660px src=' + video.thumbnail_large + '>');
 		$(".video-thumbnail").html(video.html);
+
+		// Info
 		$(".video-info .likes").html(video.stats_number_of_likes);
 		$(".video-info .plays").html(video.stats_number_of_plays);
 		$(".video-info .author").html("By: " + video.user_name);
 		$(".video-description").html(video.description);
+ 
+		bindShowMore();
 	}
 
 	function bindVideoDisplay (video) {
@@ -79,7 +89,30 @@ $(function () {
 			});
 	}
 
-	$('#video-list').perfectScrollbar();
-	loadVideosFormChannel(channel);
+	function bindShowMore () {
+		$('.show-more').click(function () {
+			if ($(this).hasClass('showing-more')) {
+				$('.video-description')
+					.css({'height': '100px'});
+				$('.show-more')
+					.html('Show more')
+					.removeClass('showing-more');
+			} else {
+				$('.video-description')
+					.css({'height': 'auto'});
+				$('.show-more')
+					.html('Show less')
+					.addClass('showing-more');
+			}
+			
+		});		
+	}
 
+	function bindScrollbar () {
+		$('#video-list').perfectScrollbar({
+			suppressScrollX: true
+		});
+	}	
+
+	loadVideosFromChannel(channel);
 }());
