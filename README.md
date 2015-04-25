@@ -14,4 +14,4 @@ To setup:
 To run:
 
     grunt
-    open dist/index.htm
+    open public/index.htm
